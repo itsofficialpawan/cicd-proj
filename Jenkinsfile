@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'jenkins-slave-node'
+            label 'JenkinsSlaveNodeLabel'
         }
     }
     
@@ -11,9 +11,10 @@ pipeline {
                 git url: 'https://github.com/itsofficialpawan/cicd-proj.git', branch: 'main'
             }
         }
-        stage('cleanup stage') {
+       stage('cleanup stage') {
             steps {
-                sh 'docker ps'
+                sh 'docker rmi pawan2000/myimage'
+                sh 'docker rm -f $(docker ps -aq)'
             }
         }
         stage('Build Docker Image') {
@@ -38,3 +39,4 @@ pipeline {
         }
     }
 }
+
