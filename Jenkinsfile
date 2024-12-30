@@ -13,7 +13,7 @@ pipeline {
         }
         stage('cleanup stage') {
             steps {
-                sh 'docker rmi myimage'
+                sh 'docker rmi myimage:latest'
                 sh 'docker rm -f $(docker ps -aq)'
             }
         }
