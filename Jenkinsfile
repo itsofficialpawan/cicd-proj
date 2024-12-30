@@ -14,7 +14,7 @@ pipeline {
        stage('cleanup stage') {
             steps {
                 sh 'docker rmi pawan2000/myimage'
-                sh 'docker rm -f $(docker ps -aq)'
+               /* sh 'docker rm -f $(docker ps -aq)'*/
             }
         }
         stage('Build Docker Image') {
